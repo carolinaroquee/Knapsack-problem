@@ -4,4 +4,4 @@ project(Truck_Pallet)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Truck_Pallet main.cpp CommandLineMenu.cpp
-        DataLoader.cpp  ExhaustiveBF.cpp )
+        DataLoader.cpp  ExhaustiveBF.cpp KnapsackDP.cpp)

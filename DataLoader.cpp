@@ -11,9 +11,10 @@ using namespace std;
 
 void loadData(string datasetId, TruckandPallet& data) {
 
+    if (datasetId.size() == 1) datasetId = "0" + datasetId;
 
-    string truckFile = "../datasets/TruckAndPallets_0" + datasetId + ".csv";
-    string palletsFile = "../datasets/Pallets_0" + datasetId + ".csv";
+    string truckFile = "../datasets/TruckAndPallets_" + datasetId + ".csv";
+    string palletsFile = "../datasets/Pallets_" + datasetId + ".csv";
 
     ifstream file1(truckFile);
     string line;

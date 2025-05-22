@@ -6,6 +6,7 @@ using namespace std;
 #include "TruckandPallet.h"
 #include "DataLoader.h"
 #include "ExhaustiveBF.h"
+#include "knapsackDP.h"
 
 void command_line(){
     TruckandPallet truck;
@@ -25,7 +26,7 @@ void command_line(){
       cin >> choice;
 
     if (choice == 1){
-        cout << " Select the dataset (1, 2, 3, 4)";
+        cout << " Select the dataset (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)";
         cin>> datasetChoice;
         loadData(datasetChoice,truck);
 
@@ -46,6 +47,23 @@ void command_line(){
         cout << " Select the dataset (1, 2, 3, 4)";
         cin>> datasetChoice;
         loadData(datasetChoice,truck);
+
+        bool usedItems[truck.pallets.size()] = {false};
+        unsigned int maxProfit = knapsackDP(truck.pallets, truck.truckCapacity, usedItems);
+
+        cout << "Max profit (Dynamic Programming): " << maxProfit << endl;
+        cout << "Selected pallets:" << endl;
+        int totalWeight = 0;
+
+        // Exibe as paletes selecionadas
+        for (size_t i = 0; i < truck.pallets.size(); ++i) {
+            if (usedItems[i]) {
+                cout << " - Pallet " << truck.pallets[i].id << " (Weight: " << truck.pallets[i].weight
+                     << ", Profit: " << truck.pallets[i].profit << ")" << endl;
+                totalWeight += truck.pallets[i].weight;
+            }
+        }
+        cout << "Total weight: " << totalWeight << endl;
 
     }
 

@@ -73,6 +73,12 @@ build CMakeFiles/Truck_Pallet.dir/ExhaustiveBF.cpp.obj: CXX_COMPILER__Truck_Pall
   OBJECT_DIR = CMakeFiles\Truck_Pallet.dir
   OBJECT_FILE_DIR = CMakeFiles\Truck_Pallet.dir
 
+build CMakeFiles/Truck_Pallet.dir/KnapsackDP.cpp.obj: CXX_COMPILER__Truck_Pallet_unscanned_Debug C$:/Users/carol/CLionProjects/Truck-Pallet/KnapsackDP.cpp || cmake_object_order_depends_target_Truck_Pallet
+  DEP_FILE = CMakeFiles\Truck_Pallet.dir\KnapsackDP.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Truck_Pallet.dir
+  OBJECT_FILE_DIR = CMakeFiles\Truck_Pallet.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Truck_Pallet
@@ -81,7 +87,7 @@ build CMakeFiles/Truck_Pallet.dir/ExhaustiveBF.cpp.obj: CXX_COMPILER__Truck_Pall
 #############################################
 # Link the executable Truck_Pallet.exe
 
-build Truck_Pallet.exe: CXX_EXECUTABLE_LINKER__Truck_Pallet_Debug CMakeFiles/Truck_Pallet.dir/main.cpp.obj CMakeFiles/Truck_Pallet.dir/CommandLineMenu.cpp.obj CMakeFiles/Truck_Pallet.dir/DataLoader.cpp.obj CMakeFiles/Truck_Pallet.dir/ExhaustiveBF.cpp.obj
+build Truck_Pallet.exe: CXX_EXECUTABLE_LINKER__Truck_Pallet_Debug CMakeFiles/Truck_Pallet.dir/main.cpp.obj CMakeFiles/Truck_Pallet.dir/CommandLineMenu.cpp.obj CMakeFiles/Truck_Pallet.dir/DataLoader.cpp.obj CMakeFiles/Truck_Pallet.dir/ExhaustiveBF.cpp.obj CMakeFiles/Truck_Pallet.dir/KnapsackDP.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Truck_Pallet.dir
