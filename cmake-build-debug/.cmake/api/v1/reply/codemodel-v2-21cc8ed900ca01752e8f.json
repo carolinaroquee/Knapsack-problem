@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Truck_Pallet::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Truck_Pallet-Debug-e0af69aeffaae7435d4d.json",
+					"jsonFile" : "target-Truck_Pallet-Debug-f4c67e7c236ddbddd60f.json",
 					"name" : "Truck_Pallet",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/carol/CLionProjects/Truck-Pallet/cmake-build-debug",
-		"source" : "C:/Users/carol/CLionProjects/Truck-Pallet"
+		"build" : "C:/Users/anita/DA/Projeto2/Truck_Pallet/cmake-build-debug",
+		"source" : "C:/Users/anita/DA/Projeto2/Truck_Pallet"
 	},
 	"version" : 
 	{

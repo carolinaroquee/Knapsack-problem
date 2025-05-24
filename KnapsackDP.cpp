@@ -1,12 +1,10 @@
 #include "Pallet.h"
-#include "DataLoader.h"
-#include "TruckandPallet.h"
 #include <vector>
 #include <iostream>
 
 using namespace std;
 
-int knapsackDP(vector<Pallet>& pallets, int truckCapacity, bool usedItems[]) {
+unsigned int knapsackDP(vector<Pallet>& pallets, int truckCapacity, bool usedItems[]) {
     unsigned int n = pallets.size();  // Número de paletes
     unsigned int maxValue[n+1][truckCapacity+1];  // Tabela de DP
 
@@ -27,15 +25,26 @@ int knapsackDP(vector<Pallet>& pallets, int truckCapacity, bool usedItems[]) {
             }
         }
     }
-
-
     unsigned int remainingWeight = truckCapacity;
+
     for (unsigned int i = n; i > 0; i--) {
+        int itemWeight = pallets[i-1].weight;
+        int itemProfit = pallets[i-1].profit;
+
+        if (remainingWeight >= itemWeight &&
+            maxValue[i][remainingWeight] == maxValue[i-1][remainingWeight - itemWeight] + itemProfit) {
+
+            usedItems[i-1] = true;
+            remainingWeight -= itemWeight;
+        }
+    }
+
+    /*for (unsigned int i = n; i > 0; i--) {
         // Se a solução não mudou entre incluir ou não incluir a palete, ela não foi escolhida
         if (maxValue[i][remainingWeight] != maxValue[i-1][remainingWeight]) {
             usedItems[i-1] = true;
             remainingWeight -= pallets[i-1].weight;
         }
-    }
+    }*/
     return maxValue[n][truckCapacity];
 }
