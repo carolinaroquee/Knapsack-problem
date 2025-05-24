@@ -1,0 +1,24 @@
+# Ignorar build do CLion
+cmake-build-debug/
+
+# Ignorar binários
+*.exe
+*.obj
+*.o
+*.a
+*.so
+*.dll
+
+# Ignorar ficheiros temporários
+*.d
+*.log
+*.rsp
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Diretórios e ficheiros do CLion/JetBrains
+.ideacmake-build-debug/

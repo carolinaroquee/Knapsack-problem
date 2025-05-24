@@ -1,3 +1,0 @@
-C:/Users/anita/DA/Projeto2/Truck_Pallet/cmake-build-debug/CMakeFiles/Truck_Pallet.dir
-C:/Users/anita/DA/Projeto2/Truck_Pallet/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/anita/DA/Projeto2/Truck_Pallet/cmake-build-debug/CMakeFiles/rebuild_cache.dir
