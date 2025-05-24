@@ -2,13 +2,13 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <limits>
 using namespace std;
 
 #include "TruckandPallet.h"
 #include "DataLoader.h"
 #include "ExhaustiveBF.h"
 #include "knapsackDP.h"
-#include "GreedyByProfit.h"
 #include "GreedyByRatio.h"
 
 void command_line(){
@@ -28,9 +28,12 @@ void command_line(){
 
       cin >> choice;
 
+
+
     if (choice == 1){
         cout << " Select the dataset (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)";
         cin>> datasetChoice;
+
         loadData(datasetChoice,truck);
 
         std::vector<Pallet> bestSolution;
@@ -50,6 +53,7 @@ void command_line(){
     else if (choice == 2) {
         cout << " Select the dataset (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)";
         cin>> datasetChoice;
+
         loadData(datasetChoice,truck);
 
         bool usedItems[truck.pallets.size()] = {false};
@@ -75,44 +79,26 @@ void command_line(){
     else if (choice == 3) {
         cout << " Select the dataset (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)";
         cin>> datasetChoice;
+
         loadData(datasetChoice,truck);
 
-        /*vector<bool> bestSolution(truck.pallets.size(), false);
-        unsigned int maxProfit = knapsackApprox(truck.pallets, truck.truckCapacity, bestSolution);
 
-        */
+        bool usedItems[truck.pallets.size()] = {false};
 
+        unsigned int maxProfit= GreedyByRatio(truck.pallets, truck.truckCapacity, usedItems);
 
-
-        bool usedItems1[truck.pallets.size()] = {false};
-        bool usedItems2[truck.pallets.size()] = {false};
-
-        unsigned int profit1= GreedyByProfit(truck.pallets, truck.truckCapacity, usedItems1);
-        unsigned int profit2= GreedyByRatio(truck.pallets, truck.truckCapacity, usedItems2);
-
-        unsigned int maxProfit= max(profit1,profit2);
-        cout<< profit1 << "   " << profit2 << endl;
         int totalWeight = 0;
         cout << "Max profit (Approximation Algorithm): " << maxProfit << endl;
-        if (maxProfit == profit1) {
-            for (size_t i = 0; i < truck.pallets.size(); ++i) {
-                if (usedItems1[i]) {
-                    cout << " - Pallet " << truck.pallets[i].id << " (Weight: " << truck.pallets[i].weight
-                         << ", Profit: " << truck.pallets[i].profit << ")" << endl;
-                    totalWeight += truck.pallets[i].weight;
-                }
+
+        cout << "Selected pallets:"<< endl;
+        for (size_t i = 0; i < truck.pallets.size(); ++i) {
+            if (usedItems[i]) {
+                cout << " - Pallet " << truck.pallets[i].id << " (Weight: " << truck.pallets[i].weight
+                    << ", Profit: " << truck.pallets[i].profit << ")" << endl;
+                totalWeight += truck.pallets[i].weight;
             }
-            cout << "Total weight: " << totalWeight << endl;
-        }else {
-            for (size_t i = 0; i < truck.pallets.size(); ++i) {
-                if (usedItems2[i]) {
-                    cout << " - Pallet " << truck.pallets[i].id << " (Weight: " << truck.pallets[i].weight
-                         << ", Profit: " << truck.pallets[i].profit << ")" << endl;
-                    totalWeight += truck.pallets[i].weight;
-                }
-            }
-            cout << "Total weight: " << totalWeight << endl;
         }
+        cout << "Total weight: " << totalWeight << endl;
         cout << endl;
 
     }
@@ -120,7 +106,26 @@ void command_line(){
     else if (choice == 4) {
         cout << " Select the dataset (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)";
         cin>> datasetChoice;
+
         loadData(datasetChoice,truck);
+
+        //ofstream out("C:\\Users\\anita\\DA\\Projeto2\\Truck_Pallet\\input.txt");
+        ofstream out("../input.txt");
+        out << truck.numPallets << endl;
+        out << truck.truckCapacity << endl;
+
+        for (auto & pallet : truck.pallets) {
+            out << pallet.weight << " ";
+        }
+        out << endl;
+        for (auto & pallet : truck.pallets) {
+            out << pallet.profit << " ";
+        }
+        out << endl;
+        int ret = system("..\\.venv\\Scripts\\python.exe ../KnapsackSolver.py ../input.txt");
+        if (ret != 0) {
+            std::cerr << "Failed to run solver" << std::endl;
+        }
     }
   }
 
