@@ -1,50 +1,47 @@
 #include "Pallet.h"
 #include <vector>
+#include "subProblem.h"
 #include <iostream>
 
 using namespace std;
 
 unsigned int knapsackDP(vector<Pallet>& pallets, int truckCapacity, bool usedItems[]) {
-    unsigned int n = pallets.size();  // Número de paletes
-    unsigned int maxValue[n+1][truckCapacity+1];  // Tabela de DP
+    unsigned int n = pallets.size();
+    vector dp(n+1, vector<subProblem>(truckCapacity+1, {0, 0}));
+    vector choice(n+1, vector(truckCapacity+1, false));
 
-    //linha 0
-    for (unsigned int k = 0; k <= truckCapacity; k++) {
-        maxValue[0][k] = 0;  // Se não há paletes, o lucro é 0 para qualquer capacidade
-    }
-
-    //linha 1 para baixo
     for (unsigned int i = 1; i <= n; i++) {
         for (unsigned int k = 0; k <= truckCapacity; k++) {
             if (k < pallets[i-1].weight) {
-                //Quando o peso k da mochila é menor que o peso da palete, a palete não pode ser incluída
-                maxValue[i][k] = maxValue[i-1][k];
+                dp[i][k] = dp[i-1][k];
+                choice[i][k] = false;
             } else {
-                // Caso inclua a palete: max entre não incluir ou incluir a palete
-                maxValue[i][k] = std::max(maxValue[i-1][k], maxValue[i-1][k - pallets[i-1].weight] + pallets[i-1].profit);
+                subProblem noPick = dp[i-1][k];
+                subProblem pick = {
+                    dp[i-1][k - pallets[i-1].weight].profit + pallets[i-1].profit,
+                    dp[i-1][k - pallets[i-1].weight].count + 1
+                };
+                if (noPick < pick) { //quando são iguais
+                    dp[i][k] = pick;
+                    choice[i][k] = true;  // escolheu palete i
+                } else {
+                    dp[i][k] = noPick;
+                    choice[i][k] = false; // não escolheu palete i
+                }
             }
         }
     }
+
+    // Reconstruir solução usando choice
     unsigned int remainingWeight = truckCapacity;
-
-    for (unsigned int i = n; i > 0; i--) {
-        int itemWeight = pallets[i-1].weight;
-        int itemProfit = pallets[i-1].profit;
-
-        if (remainingWeight >= itemWeight &&
-            maxValue[i][remainingWeight] == maxValue[i-1][remainingWeight - itemWeight] + itemProfit) {
-
+    for (int i = n; i > 0; i--) {
+        if (choice[i][remainingWeight]) {
             usedItems[i-1] = true;
-            remainingWeight -= itemWeight;
+            remainingWeight -= pallets[i-1].weight;
+        } else {
+            usedItems[i-1] = false;
         }
     }
 
-    /*for (unsigned int i = n; i > 0; i--) {
-        // Se a solução não mudou entre incluir ou não incluir a palete, ela não foi escolhida
-        if (maxValue[i][remainingWeight] != maxValue[i-1][remainingWeight]) {
-            usedItems[i-1] = true;
-            remainingWeight -= pallets[i-1].weight;
-        }
-    }*/
-    return maxValue[n][truckCapacity];
+    return dp[n][truckCapacity].profit;
 }
