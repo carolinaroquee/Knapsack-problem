@@ -1,10 +1,19 @@
-
 #include "Pallet.h"
-#include "DataLoader.h"
 #include "TruckandPallet.h"
 
 using namespace std;
 
+/**
+ * @brief Implementação do algoritmo exaustivo (força bruta) para mochila.
+ *
+ * Testa todas as combinações de pallets e retorna a melhor solução.
+ *
+ * @param pallets Vetor dos pallets disponíveis.
+ * @param truckCapacity Capacidade máxima do camião.
+ * @param bestSolution Vetor para armazenar a melhor combinação encontrada.
+ *
+ * @return int Lucro máximo obtido.
+ */
 int ExhaustiveBF(std::vector<Pallet>& pallets, int truckCapacity, std::vector<Pallet>& bestSolution) {
     const int n = pallets.size();
 

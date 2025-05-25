@@ -1,0 +1,33 @@
+digraph "Pallet.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Pallet.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DataLoader.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DataLoader_8cpp.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ExhaustiveBF.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ExhaustiveBF_8cpp.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ExhaustiveBF.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ExhaustiveBF_8h.html",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="CommandLineMenu.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$CommandLineMenu_8cpp.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="GreedyByRatio.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$GreedyByRatio_8cpp.html",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="GreedyByRatio.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$GreedyByRatio_8h.html",tooltip=" "];
+  Node7 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="KnapsackDP.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$KnapsackDP_8cpp.html",tooltip=" "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="KnapsackDP.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$KnapsackDP_8h.html",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="TruckandPallet.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TruckandPallet_8h.html",tooltip=" "];
+  Node10 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="DataLoader.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DataLoader_8h.html",tooltip=" "];
+  Node11 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

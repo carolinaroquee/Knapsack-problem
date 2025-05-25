@@ -9,6 +9,16 @@
 
 using namespace std;
 
+/**
+ * @brief Implementação da função que carrega dados dos arquivos CSV para TruckandPallet.
+ *
+ * @param datasetId Identificador do dataset a carregar.
+ * @param data Estrutura onde os dados serão armazenados.
+ *
+ * @details
+ * Lê arquivo TruckAndPallets_<datasetId>.csv para capacidade e número de pallets,
+ * e Pallets_<datasetId>.csv para dados dos pallets.
+ */
 void loadData(string datasetId, TruckandPallet& data) {
 
     if (datasetId.size() == 1) datasetId = "0" + datasetId;

@@ -1,15 +1,14 @@
-//
-// Created by carol on 20/05/2025.
-//
-
 #ifndef PALLETE_H
 #define PALLETE_H
 
-
+/**
+ * @struct Pallet
+ * @brief Representa um palete com id, peso e lucro.
+ */
 struct Pallet {
-    int id;
-    int weight;
-    int profit;
+    int id;         /**< Identificador único do pallet */
+    int weight;     /**< Peso do palete */
+    int profit;     /**< Lucro associado ao pallet */
 };
 
 

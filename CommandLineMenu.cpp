@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <algorithm>
-#include <limits>
 using namespace std;
 
 #include "TruckandPallet.h"
@@ -11,6 +9,12 @@ using namespace std;
 #include "knapsackDP.h"
 #include "GreedyByRatio.h"
 
+/**
+ * @brief Função que implementa o menu interativo para o programa.
+ *
+ * Permite ao usuário escolher o algoritmo para executar e o dataset para usar.
+ * Imprime resultados detalhados e, no caso do ILP, chama o script Python.
+ */
 void command_line(){
     TruckandPallet truck;
     string datasetChoice;

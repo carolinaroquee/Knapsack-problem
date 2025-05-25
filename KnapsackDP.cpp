@@ -5,6 +5,12 @@
 
 using namespace std;
 
+/**
+ * @brief Implementação do algoritmo de Programação Dinâmica para o problema da mochila.
+ *
+ * Calcula o lucro máximo possível respeitando a capacidade do camião e
+ * reconstrói a solução ótima.
+ */
 unsigned int knapsackDP(vector<Pallet>& pallets, int truckCapacity, bool usedItems[]) {
     unsigned int n = pallets.size();
     vector dp(n+1, vector<subProblem>(truckCapacity+1, {0, 0}));
